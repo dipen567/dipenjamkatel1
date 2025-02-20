@@ -1,9 +1,14 @@
 body{
-	background-color:#D6D6D6;
-	
+  background-color: white ;
+}
+h2 {
+  margin-bottom: 15px;
+  color: blueviolet;
+  font-size: 30px;
+  font-family: "Bell MT", "Times New Roman", serif;
 }
 .navbar {
-  background-color: #333;
+  background-color:white;
   padding: 10px 0;
   display: flex;
   justify-content: center;  
@@ -19,11 +24,13 @@ body{
 /* Style for each nav item */
 .navbar-list li {
   display: inline-block;
+  padding: 5px 15px;
 }
 
 .navbar-list a {
-  color: white;
+  color:black;
   text-decoration: none;
+  font-weight: bold; 
   padding: 10px 15px;
   transition: background-color 0.3s;
 }
@@ -31,67 +38,9 @@ body{
 .navbar-list a:hover {
   background-color: blueviolet;
 }
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  /*Changes in the heading 1 */
-  h1 { 
-    text-align: center;
-    font-size: 30px;
-    font-family:"Bell MT", serif;
-    color: blueviolet;
-    font-weight:bold;
-  }
-  
-  /* Flexbox layout for video and summary side by side */
-  .video-summary {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 30px;
-  }
-  
-  .video-box {
-    flex: 1;
-    border-color: black; 
-  }
-  
-  .summary {
-    flex: 1; 
-  }
-  
-  h2 {
-    margin-bottom: 15px;
-    color: blueviolet;
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  .image {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .Gallery {
-    width: 22%;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-  }
-  .Gallery:hover {
-    transform: scale(1.05);
-    border: 3px solid  blueviolet;
-  }
   .footer {
-    background-color: #333;
-    color: white;
+    background-color:#d1d8e2;
+    color: black;
     text-align: center;
     padding: 20px 0;
     position: relative;
@@ -102,7 +51,7 @@ body{
     margin-bottom: 10px;
   }
   .icon {
-    color: white;
+    color: black;
     font-size: 24px;
     margin: 0 15px;
     text-decoration: none;
@@ -114,58 +63,124 @@ body{
   .footer p {
     font-size: 14px;
   }
-  .summary2 {
-    flex: 1; 
+ /* Ensure flexbox aligns items properly */
+.video-container {
+  display: flex; /* Makes items align in a row */
+  align-items: center; /* Centers video and description vertically */
+  gap: 20px; /* Adds space between video and description */
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap; 
+}
+
+/* Video section */
+.video {
+  flex: 1 1 50%; /* Ensures video takes up half the space */
+  max-width: 600px; /* Prevents the video from stretching too wide */
+}
+
+.video iframe {
+  width: 100%; /* Makes iframe responsive */
+  height: 340px; /* Keeps proper aspect ratio */
+  border-radius: 20px;
+}
+.description {
+  flex: 1 1 50%; /* Ensures description takes up the other half */
+  max-width: 600px; /* Prevents it from stretching too wide */
+  text-align: left;
+}
+
+/* Heading and paragraph styling */
+h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+font-family: "Bell MT", "Times New Roman", serif;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .video-container {
+      flex-direction: column; /* Stacks video and description on smaller screens */
+      align-items: center;
+      text-align: center;
   }
-  h3 {
-    margin-bottom: 15px;
-    color: blueviolet;
-    font-size: 40px;
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    border-bottom: 2px solid black; 
+
+  .video, .description {
+      width: 100%; /* Makes both elements full width on small screens */
+      max-width: 100%;
   }
-  .summary3{
-    flex: 1; 
+
+  .video iframe {
+      height: auto; /* Adjusts height dynamically */
   }
-  
+}
   h4 {
+    text-align: center;
     margin-bottom: 15px;
     color: blueviolet;
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-family: "Bell MT", "Times New Roman", serif;
   }
   .container1 { 
-     display: flex;
-     align-items: center; 
-     justify-content: center; 
-     height: 60vh;
-     margin: 20px;
-    }     
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    height: auto; /* Allow height to adjust naturally */
+    margin: 20px;
+    flex-wrap: wrap; /* Prevents overflow */
+    gap: 20px; /* Adds spacing */
+}     
 
-  .image1 { 
+.image1 { 
     flex: 1;  
-    padding: 30px; } 
-    
-   .summary4{ 
+    padding: 20px; 
+    display: flex;
+    justify-content: center; /* Centers image */
+}
+
+.image1 img { 
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 15px;
+    max-height: 300px; /* Prevents excessive stretching */
+} 
+
+.summary4 {
+    color: black; 
     flex: 1; 
-    padding: 20px; } 
-    
-    img { 
-        max-width: 100%; 
-        height: auto; 
-        border: 5px solid #000; 
-        border-radius: 15px;
-        height: 60vh;
+    padding: 20px; 
+    min-width: 250px; /* Prevents text from shrinking too much */
+} 
+
+h5 {
+    margin-bottom: 15px;
+    color: rgb(17, 15, 15);
+    font-size: 35px; /* Slightly smaller for better scaling */
+    font-family:''Roboto', sans-serif;';
+    text-align: center;
+    border-bottom: 2px solid black; 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container1 {
+        flex-direction: column; /* Stack image and text */
+        text-align: center; /* Center align content */
     }
-    h5 {
-        margin-bottom: 15px;
-        color: blueviolet;
-        font-size: 40px;
-        font-family: 'Times New Roman', Times, serif;
-        text-align: center;
-        border-bottom: 2px solid black; 
-      }
+
+    .image1 img {
+        max-height: 250px; /* Adjust for smaller screens */
+        width: 80%; /* Prevent full width stretching */
+    }
+}
+
     h6 {
         margin-bottom: 15px;
         color: blueviolet;
@@ -207,4 +222,49 @@ body{
         cursor: pointer;
     }
 
-   
+   /* Media container to hold images and video */
+.media-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual media boxes */
+.media-box {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  aspect-ratio: 16 / 9; /* Ensures all media have same size */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black; /* Ensures visibility if video fails to load */
+  border-radius: 10px;
+  border-color: #555;
+}
+
+/* Ensures images and videos align properly */
+.media-box img,
+.media-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures media fills container */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+
+/* Hover effect */
+.media-box:hover img,
+.media-box:hover video {
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.3); /* Soft glow */
+}
+
+/* Video troubleshooting */
+.media-box video {
+  display: block; /* Ensures it's visible */
+  background-color: black; /* Background for visibility */
+}
