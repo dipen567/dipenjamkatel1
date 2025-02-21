@@ -1,6 +1,8 @@
+
 body{
   background-color: white ;
-}
+  
+} 
 h2 {
   margin-bottom: 15px;
   color: blueviolet;
@@ -8,10 +10,22 @@ h2 {
   font-family: "Bell MT", "Times New Roman", serif;
 }
 .navbar {
-  background-color:white;
-  padding: 10px 0;
+  position:fixed;
+  top:0px;
+  left:0;
+  width:100%;
+  background-color:transparent;
+  padding: 20px 10%;
   display: flex;
-  justify-content: center;  
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+.logo {
+  font-size: 25px;
+  color: black;
+  text-decoration: none;
+  font-weight: 18px;
 }
 
 /* Style for navbar list */
@@ -28,14 +42,16 @@ h2 {
 }
 
 .navbar-list a {
+  font-size: 18px;`
   color:black;
   text-decoration: none;
-  font-weight: bold; 
-  padding: 10px 10px;
-  transition: background-color 0.3s;
+  font-weight: 500; 
+  margin-left: 35px;
+  transition: 0.3s;
 }
 
-.navbar-list a:hover {
+.navbar-list a:hover,
+.navbar-list a.active {
   background-color: blueviolet;
 }
   .footer {
@@ -246,25 +262,25 @@ h5 {
   border-color: #555;
 }
 
-/* Ensures images and videos align properly */
+/* Ensures images and videos align properly 
 .media-box img,
 .media-box video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures media fills container */
+  object-fit: cover; /* Ensures media fills container 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 10px;
-}
+}*/
 
-/* Hover effect */
+/* Hover effect 
 .media-box:hover img,
 .media-box:hover video {
-  transform: scale(1.05); /* Slight zoom effect */
+  transform: scale(1.05); /* Slight zoom effect 
   box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.3); /* Soft glow */
 }
 
-/* Video troubleshooting */
+/* Video troubleshooting 
 .media-box video {
-  display: block; /* Ensures it's visible */
+  display: block; /* Ensures it's visible 
   background-color: black; /* Background for visibility */
-}
+}*/
