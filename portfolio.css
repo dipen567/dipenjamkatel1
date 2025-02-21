@@ -40,9 +40,10 @@ h2 {
     background-color:#d1d8e2;
     color: black;
     text-align: center;
+    padding: 20px 0;
     position: absolute;
-    bottom: 40px;
-    width: 170px;
+    bottom: 0;
+    width: 100%;
   } 
   .icons {
     margin-bottom: 10px;
