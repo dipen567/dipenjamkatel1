@@ -8,7 +8,7 @@ h2 {
   font-family: "Bell MT", "Times New Roman", serif;
 }
 .navbar {
-  background-color:white;
+  background-color: transparent;
   padding: 10px 0;
   display: flex;
   justify-content: center;  
