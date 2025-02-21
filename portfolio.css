@@ -222,3 +222,49 @@ h5 {
         cursor: pointer;
     }
 
+   /* Media container to hold images and video */
+.media-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual media boxes */
+.media-box {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  aspect-ratio: 16 / 9; /* Ensures all media have same size */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black; /* Ensures visibility if video fails to load */
+  border-radius: 10px;
+  border-color: #555;
+}
+
+/* Ensures images and videos align properly */
+.media-box img,
+.media-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures media fills container */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+
+/* Hover effect */
+.media-box:hover img,
+.media-box:hover video {
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.3); /* Soft glow */
+}
+
+/* Video troubleshooting */
+.media-box video {
+  display: block; /* Ensures it's visible */
+  background-color: black; /* Background for visibility */
+}
