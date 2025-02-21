@@ -1,6 +1,4 @@
-body{
-  background-color: white ;
-}
+
 h2 {
   margin-bottom: 15px;
   color: blueviolet;
@@ -8,7 +6,7 @@ h2 {
   font-family: "Bell MT", "Times New Roman", serif;
 }
 .navbar {
-  background-color: transparent;
+  background-color: none;
   padding: 10px 0;
   display: flex;
   justify-content: center;  
