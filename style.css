@@ -4,6 +4,14 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+body {
+    background-color: white;
+    background-image: url('Images/background6.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
 html, body {
     width: 100%;
