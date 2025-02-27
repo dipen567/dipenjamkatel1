@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        
+        body {
+            font-family: "Bell MT", "Times New Roman", serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: white;
+            background-image: url('Images/background6.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: "Bell MT", "Times New Roman", serif;
+        } 
+        /* Navbar */
+        .navbar {
+            position: relative;
+            width: 100%;
+            background: #eff4fd;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+        
+        .navbar-list {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .navbar-list li {
+            margin: 0 10px;
+        }
+        
+        .navbar-list a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .navbar-list a:hover {
+            color: blueviolet;
+        }
+
+        /* Gallery Container */
+        .gallery-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Uniform image size */
+            gap: 15px;
+            width: 100%;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px; /* Fixed height for uniform size */
+            object-fit: cover; /* Ensure images fill the container */
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 15px;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-icons a {
+            color: black;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: blueviolet;
+            transform: scale(1.1);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .modal-content {
+            background-color: #d1d8e2;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh; /* Limit height to 80% of viewport */
+            overflow-y: auto; /* Add scrollbar for modal content */
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333; 
+            text-decoration: underline; 
+        }
+
+        .modal-content p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #555; /* Slightly lighter text for description */
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 400px; /* Limit main image size */
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            object-fit: contain; /* Ensure the image is fully visible */
+        }
+
+        .sub-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Grid layout for sub-images */
+            gap: 10px; /* Spacing between sub-images */
+            overflow: hidden; /* Hide overflow for swipe effect */
+        }
+
+        .sub-images img {
+            width: 100%; /* Ensure images take up the full width of their container */
+            height: 150px; /* Fixed height for uniform size */
+            object-fit: cover; /* Ensure images fill the container */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .sub-images img:hover {
+            transform: scale(1.1);
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        @media screen and (max-width: 768px) {
+            .video-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        
+            .social-icons {
+                right: 10px;
+                bottom: 10px;
+                padding: 8px;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <ul class="navbar-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Demo Reel.html">DemoReel</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Gallery Container -->
+    <div class="gallery-container">
+        <div class="gallery">
+            <img src="Images/g1.jpg" alt="Image 1" data-id="1">
+            <img src="Images/g2.jpg" alt="Image 2" data-id="2">
+            <img src="Images/g3.jpg" alt="Image 3" data-id="3">
+            <img src="Images/g4.jpg" alt="Image 4" data-id="4">
+            <img src="Images/g5.jpg" alt="Image 5" data-id="5">
+            <img src="Images/g6.jpg" alt="Image 6" data-id="6">
+            <img src="Images/antSide.jpg" alt="Image 7" data-id="7">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/its_d_pen/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@dipenjamkatel2820?si=Ik08-I5G-M42ieMz" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/dipen-jamkatel-157418265?trk=contact-info" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/dipen567/dipenjamkatel1" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+        <p>&copy; 2024 Dipen Jamkatel. All rights reserved.</p>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" src="" alt="Modal Image">
+            <div id="modalDescription"></div>
+            <div class="sub-images" id="subImages">
+                <!-- Sub-images will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Modal and Sub-Image Zoom -->
+    <script>
+        const images = [
+            {
+                id: 1,
+                src: "Images/g1.jpg",
+                title: "Low Ploy Dragon", // Title for Image 1
+                description: "This low-poly green dragon stands as a guardian of untamed power, its angular form sculpted with precision to balance simplicity and strength. Set against a fiery, chaotic red-hued environment, the contrast between its vibrant green scales and the surrounding turmoil creates a striking visual narrative. Each render captures the dragon in a different light, shifting between shadow and illumination, emphasizing its geometric design and sharp-edged elegance. Though stylized in form, the creature’s presence remains formidable, a testament to the artistry of low-poly modeling. Carefully crafted and rendered with atmospheric depth, this dragon embodies a fusion of fantasy, minimalism, and raw energy.",
+                related: ["Images/Dragon_img_01.jpg", "Images/Dragon_img_03.jpg"]
+            },
+            {
+                id: 2,
+                src: "Images/g2.jpg",
+                title: "Background Design", // Title for Image 2
+                description: "",
+                related: ["Images/idea_1.jpg", "Images/color_2.jpg", "Images/final_3.jpg"]
+            },
+            {
+                id: 3,
+                src: "Images/g3.jpg",
+                title: "Comparative Anatomy", // Title for Image 3
+                description: "This is a study of two different species and merged together to make a new one.",
+                related: ["Images/Comparative_study_1.jpg", "Images/Comparative_study_2.jpg", "Images/Comparative_study_3.jpg", "Images/Comparative_study_4.jpg", "Images/Comparative_study_5.jpg", "Images/Comparative_study_6.jpg", "Images/Comparative_study_7.jpg"]
+            },
+            {
+                id: 4,
+                src: "images/g4.jpg",
+                title: "Old Rifle", // Title for Image 4
+                description: "Scarred by time and conflict, this old rifle stands as a relic of forgotten battles. Its wooden stock bears the marks of countless hands that once gripped it in moments of desperation and triumph. The metal, dulled by age and weathered by war, carries the weight of history—scratches, rust, and faded engravings whisper untold stories of survival. Meticulously modeled and textured in Maya, every detail of this rifle speaks to its past: the worn edges, the subtle imperfections, the lingering presence of a weapon long past its prime yet never truly silenced. A tribute to the craftsmanship of an era lost in time, this rifle is more than just an object—it’s a testament to the passage of history, captured in digital form.",
+                related: ["Images/Gun_Img_02.jpg", "Images/Gun_Img_03.jpg", "Images/Gun_Img_04.jpg", "Images/Gun_Img_05.jpg"]
+            },
+            {
+                id: 5,
+                src: "Images/g5.jpg",
+                title: "Shuriken Blade", // Title for Image 5
+                description: "Forged from an unknown mystical metal, this shuriken blade with an ancient power. Its twin C-shaped blades, bound by a central grip, shimmer with ethereal energy, the glowing cracks pulsing like a heartbeat. More than a weapon, it is a relic of lost warriors, a tool of precision and destruction, forever spinning between legend and reality. ",
+                related: ["Images/R2.jpg", "Images/R3.jpg"]
+            },
+            {
+                id: 6,
+                src: "Images/g6.jpg",
+                title: "Old Tower", // Title for Image 6
+                description: "Once a symbol of grandeur, now a relic of decay, this towering structure stands defiant against time. Carved from stone and clay, its battle-worn façade tells the story of an era long lost—fractured walls, eroded carvings, and the silent echoes of those who once walked its halls. Abandoned and shrouded in shadow, it looms like a ghost of forgotten civilizations, its presence both haunting and awe-inspiring. A monument to ruin, yet a testament to resilience.",
+                related: ["Images/Tower_Img_01.jpg", "Images/Tower_02.jpg", "Images/Tower_03.jpg"]
+            },
+            {
+                id: 7,
+                src: "Images/antSide.jpg",
+                title: "The Ant Adventure", // Title for Image 7
+                description: "It’s a story that begins in an ant colony where group of ants starts a journey in search of bigger and better food. This story takes place in a wide-open landscape so there will be varieties of plants all around. All the assets will have small animations to give life to them. Since, ant would be the main character for this animation there won't be varieties of camera angles. As the group of ants advance towards the story, they catch the smell of a fruit, and they decide to go search for the food. When they approach near to the fruit they encounter antagonist of the story Lizard. Here, in this animation the back story of the lizard isn’t focused so the encounter would be all sudden. Moving to the last part of the story, there would be a battle between ants and lizard for the food. Since ants are very good for their teamwork, they end up making lizard their food too.And the story ends where ants carry their food and lizard to their colony",
+                related: ["Images/StoryBOARD_1.jpg", "Images/Character_design_3.jpg", "Images/Anatomy_2.jpg", "Images/ant_side_4.jpg", "Images/antSide_5.jpg", "Images/antTop_6.jpg"]
+            }
+        ];
+
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalDescription = document.getElementById("modalDescription");
+        const subImages = document.getElementById("subImages");
+        const closeModal = document.querySelector(".close");
+        const navbar = document.getElementById("navbar");
+
+        let currentIndex = 0; // Track the current sub-image index
+        let autoSwipeInterval; // Interval for auto-swipe
+
+        // Function to open sub-image in larger view
+        function openSubImage(src) {
+            modalImage.src = src;
+        }
+
+        // Function to start auto-swipe animation
+        function startAutoSwipe() {
+            autoSwipeInterval = setInterval(() => {
+                const subImageElements = subImages.querySelectorAll("img");
+                if (subImageElements.length > 0) {
+                    currentIndex = (currentIndex + 1) % subImageElements.length; // Cycle through images
+                    subImageElements[currentIndex].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                }
+            }, 30000);// Change image every 3 seconds
+        }
+
+        // Function to stop auto-swipe animation
+        function stopAutoSwipe() {
+            clearInterval(autoSwipeInterval);
+        }
+
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.addEventListener('click', () => {
+                const imageId = img.getAttribute('data-id');
+                const imageData = images.find(image => image.id == imageId);
+                modalImage.src = imageData.src;
+                modalDescription.innerHTML = `
+                    <h2>${imageData.title}</h2> <!-- Add title here -->
+                    <p>${imageData.description}</p>
+                `;
+
+                // Load sub-images into the modal
+                subImages.innerHTML = imageData.related.map(relatedImg => `
+                    <img src="${relatedImg}" alt="Related Image" onclick="openSubImage('${relatedImg}')">
+                `).join('');
+
+                modal.style.display = "flex";
+                navbar.style.display = "none"; // Hide the navbar when modal is open
+
+                // Start auto-swipe animation
+                startAutoSwipe();
+            });
+        });
+
+        // Pause auto-swipe on hover
+        subImages.addEventListener("mouseenter", stopAutoSwipe);
+        subImages.addEventListener("mouseleave", startAutoSwipe);
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = "none";
+            navbar.style.display = "flex"; // Show the navbar when modal is closed
+            stopAutoSwipe(); // Stop auto-swipe when modal is closed
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+                navbar.style.display = "flex"; // Show the navbar when clicking outside the modal
+                stopAutoSwipe(); // Stop auto-swipe when modal is closed
+            }
+        });
+    </script>
+</body>
+</html>
