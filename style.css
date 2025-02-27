@@ -9,16 +9,13 @@ html, body {
     height: 100%;
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
-body {
+.hero {
     background-color: white;
     background-image: url('Images/background6.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-
-.hero {
     position: relative;
     width: 100%;
     min-height: 100vh; /* Use min-height to ensure full viewport height */
