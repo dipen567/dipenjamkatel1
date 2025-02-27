@@ -8,32 +8,49 @@ body {
     background-attachment: fixed;
     margin: 0;
     font-family: "Bell MT", "Times New Roman", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 50px; /* Reduced padding to decrease gap */
 }
 
 /* Navbar */
 .navbar {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     background: #eff4fd;
     display: flex;
     justify-content: center;
-    padding: 15px 0;
+    align-items: center;
+    padding: 12px 0; /* Reduced padding to decrease height */
+    transition: all 0.3s ease;
+    z-index: 1000;
 }
 
 .navbar-list {
     list-style: none;
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Reduced spacing */
+    padding: 0;
+    margin: 0;
 }
 
 .navbar-list li {
-    margin: 0 10px;
+    margin: 0 8px;
 }
 
 .navbar-list a {
     text-decoration: none;
     color: #000;
     font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease, font-size 0.3s ease;
 }
 
 .navbar-list a:hover {
@@ -119,7 +136,17 @@ h4 {
         flex-direction: column;
         text-align: center;
     }
+    .navbar {
+        padding: 10px 0;
+    }
 
+    .navbar-list {
+        gap: 12px;
+    }
+
+    .navbar-list a {
+        font-size: 16px;
+    }
     .description {
         max-width: 90%;
     }
