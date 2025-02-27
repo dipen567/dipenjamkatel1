@@ -4,18 +4,16 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-body {
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: white;
     background-image: url('Images/background6.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .hero {
